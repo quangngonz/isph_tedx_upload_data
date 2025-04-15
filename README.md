@@ -1,12 +1,58 @@
-# React + Vite
+# ISPH TEDx CSV Uploader
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite app for uploading hashed attendee data (name, phone, email) from a CSV file into a Supabase database for ISPH TEDx event management.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 Admin login via environment password
+- 📄 CSV upload with PapaParse
+- 🔑 SHA-256 hashing of unique identifiers
+- ☁️ Supabase integration for upsert/delete
+- ⚡ Built with Vite + React 19
 
-## Expanding the ESLint configuration
+## 🔧 Setup
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Environment variables**
+
+   Create a `.env` file and add:
+
+   ```env
+   VITE_SUPABASE_URL=your-supabase-url
+   VITE_SUPABASE_ANON_KEY=your-anon-key
+   VITE_ADMIN_PASSWORD=your-admin-password
+   ```
+
+3. **Run the app**
+   ```bash
+   npm run dev
+   ```
+
+## 🗂 Project Structure
+
+- `src/App.jsx`: Main logic — handles auth, CSV parsing, hashing, uploading, and clearing.
+- `mock_data.csv`: Sample input format.
+- `eslint.config.js`: ESLint setup with modern plugins.
+- `vite.config.js`: Vite configuration using `@vitejs/plugin-react`.
+
+## 🧠 Tech Stack
+
+- React 19
+- Vite 6
+- Supabase JS SDK
+- PapaParse
+- SHA-256 via `crypto.subtle`
+
+## ⚠️ Production Tips
+
+- Add authentication via Supabase or external OAuth if scaling this app
+- Migrate to TypeScript for type safety (start from [Vite TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts))
+- Protect database operations with stricter access policies
+
+## 📜 License
+
+MIT. Do what you want — just don't break stuff in production without testing.
